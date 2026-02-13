@@ -1,0 +1,55 @@
+{
+	"songs": [
+		{
+			"name": "step wit me",
+			"date": "11-5-2025",
+			"appleLink": "https://music.apple.com/us/song/step-wit-me-feat-beany-bop-no-ty/1846968168",
+			"spotifyLink": "https://open.spotify.com/track/1F0iYnczHsdXUiYv1VCoI3?si=374bec2d1644459e",
+			"imagePath": "images/step-wit-me.jpeg",
+			"features": "Beany Bop, No.Ty"
+		},
+		{
+			"name": "Breaking Bread",
+			"date": "1-1-2026",
+			"appleLink": "https://music.apple.com/us/album/breaking-bread-single/1862786229?at=1001lry3&ct=dashboard&uo=4",
+			"spotifyLink": "https://open.spotify.com/album/5eSlfPHE9ksLFKB4zHKg7m",
+			"imagePath": "images/breaking-bread.jpeg",
+			"features": "Newman, Danielle Carr"
+		},
+		{
+			"name": "Come Alive",
+			"date": "1-29-2026",
+			"appleLink": "https://music.apple.com/us/album/come-alive-feat-maji-mac-infinity-single/1868306916?at=1001lry3&ct=dashboard&uo=4",
+			"spotifyLink": "https://open.spotify.com/track/2xv1N2wgK0ol0EMeiAIcyz?si=e2c185e2ec0149e7",
+			"imagePath": "images/come-alive.jpeg",
+			"features": "Maji, Mac Infinity"
+		}
+	],
+	"links": [
+		{
+			"label": "Spotify",
+			"url": "https://open.spotify.com/artist/6TAuEqvqLojjSF2dPDOGmv?si=wnGpXVusQcGQqHV6MXk9cw",
+			"icon": "spotify"
+		},
+		{
+			"label": "Apple Music",
+			"url": "https://music.apple.com/au/artist/flxx/1846419830",
+			"icon": "apple"
+		},
+        {
+			"label": "Tik Tok",
+			"url": "https://www.tiktok.com/@flxx_beats_",
+			"icon": "tiktok"
+		},
+		{
+			"label": "Instagram",
+			"url": "https://www.instagram.com/flxx_beats_/",
+			"icon": "insta"
+		},
+        {
+			"label": "Email",
+			"url": "mailto:flxbeats808@gmail.com",
+			"icon": "email"
+		}
+	]
+}
