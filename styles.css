@@ -55,7 +55,7 @@ body {
 	color: var(--text-main);
 	z-index: 3;
 	text-shadow: 0 20px 40px rgba(0, 0, 0, 0.85);
-	transition: letter-spacing 0.2s ease-out;
+	transition: letter-spacing 0.2s ease-out, margin-top 0.25s ease;
 }
 
 .logo::before {
@@ -314,7 +314,68 @@ main {
 	height: 24px;
 }
 
+.mobile-streaming {
+	position: fixed;
+	top: max(20px, env(safe-area-inset-top));
+	left: max(20px, env(safe-area-inset-left));
+	right: max(20px, env(safe-area-inset-right));
+	display: none;
+	justify-content: space-between;
+	align-items: stretch;
+	gap: 15px;
+	z-index: 4;
+	pointer-events: none;
+	opacity: 1;
+	transition: opacity 0.25s ease;
+}
+
+.mobile-streaming .mobile-link {
+	pointer-events: auto;
+	flex: 1 1 0;
+	justify-content: center;
+	gap: 12px;
+	padding: 15px 18px;
+	text-transform: none;
+	letter-spacing: 0.5px;
+	font-size: 1.05rem;
+	width: 100%;
+}
+
+.mobile-streaming .mobile-link svg {
+	width: 28px;
+	height: 28px;
+}
+
+.mobile-streaming.is-fading {
+	opacity: 0;
+}
+
+.mobile-streaming.is-collapsed {
+	align-items: center;
+	gap: 20px;
+}
+
+.mobile-streaming.is-collapsed .mobile-link {
+	flex: 0 0 auto;
+	width: 60px;
+	height: 60px;
+	padding: 0;
+	border-radius: 50%;
+}
+
+.mobile-streaming.is-collapsed .mobile-text {
+	display: none;
+}
+
+.mobile-streaming.is-collapsed .mobile-link svg {
+	width: 30px;
+	height: 30px;
+}
+
 @media (max-width: 860px) {
+	.mobile-streaming {
+		display: flex;
+	}
 	.timeline::before {
 		left: 20%;
 	}

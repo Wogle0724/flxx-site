@@ -17,8 +17,11 @@ const timeline = document.querySelector("#timeline");
 const hero = document.querySelector("#hero");
 const logo = document.querySelector(".logo");
 const footerLinks = document.querySelector("#footer-links");
+const mobileStreaming = document.querySelector("#mobile-streaming");
 const timelineSection = document.querySelector(".timeline-section");
 const rootStyle = document.documentElement.style;
+let mobileIsCollapsed = null;
+let mobileFadeTimer = null;
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
@@ -150,6 +153,38 @@ const setFooterLinks = (links) => {
 	});
 };
 
+const setMobileLinks = (links) => {
+	if (!mobileStreaming) return;
+	mobileStreaming.innerHTML = "";
+
+	const preferred = links.filter((link) =>
+		["spotify", "apple"].includes((link.icon || "").toLowerCase())
+	);
+
+	preferred.forEach((link) => {
+		const iconKey = (link.icon || "").toLowerCase();
+		const label =
+			iconKey === "Apple"
+				? "Apple Music"
+				: iconKey === "Spotify"
+					? "Spotify"
+					: link.label || "streaming";
+		const anchor = document.createElement("a");
+		anchor.className = "footer-link mobile-link";
+		anchor.href = link.url;
+		anchor.target = "_blank";
+		anchor.rel = "noreferrer";
+		anchor.title = label;
+		anchor.setAttribute("aria-label", label);
+		anchor.append(buildIcon(link.icon));
+		const text = document.createElement("span");
+		text.className = "mobile-text";
+		text.textContent = label;
+		anchor.appendChild(text);
+		mobileStreaming.appendChild(anchor);
+	});
+};
+
 const attachDropdownHandlers = () => {
 	timeline.addEventListener("click", (event) => {
 		const card = event.target.closest(".timeline-card");
@@ -199,6 +234,26 @@ const updateHero = () => {
 	if (logo) {
 		logo.classList.toggle("is-collapsed", progress > 0.92);
 	}
+	if (mobileStreaming) {
+		const shouldCollapse = progress > 0.92;
+		if (mobileIsCollapsed === null) {
+			mobileIsCollapsed = shouldCollapse;
+			mobileStreaming.classList.toggle("is-collapsed", shouldCollapse);
+			mobileStreaming.classList.remove("is-fading");
+		} else if (mobileIsCollapsed !== shouldCollapse) {
+			mobileIsCollapsed = shouldCollapse;
+			mobileStreaming.classList.add("is-fading");
+			if (mobileFadeTimer) {
+				window.clearTimeout(mobileFadeTimer);
+			}
+			mobileFadeTimer = window.setTimeout(() => {
+				mobileStreaming.classList.toggle("is-collapsed", shouldCollapse);
+				requestAnimationFrame(() => {
+					mobileStreaming.classList.remove("is-fading");
+				});
+			}, 200);
+		}
+	}
 };
 
 const initScroll = () => {
@@ -234,10 +289,12 @@ fetch("songs.json")
 		observeTimeline();
 		attachDropdownHandlers();
 		setFooterLinks(payload.links || []);
+		setMobileLinks(payload.links || []);
 		initScroll();
 	})
 	.catch((error) => {
 		console.error("Failed to load songs.json", error);
 		setFooterLinks([]);
+		setMobileLinks([]);
 		initScroll();
 	});
