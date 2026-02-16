@@ -290,8 +290,8 @@ main {
 .footer-links {
 	display: flex;
 	justify-content: center;
-	gap: 24px;
-	flex-wrap: wrap;
+	gap: 4vw;
+	flex-wrap: nowrap;
 }
 
 .footer-link {
@@ -356,7 +356,7 @@ main {
 
 	.platform-menu {
 		left: 50%;
-		bottom: -50px;
+		bottom: -55px;
 		gap: 12px;
 		transform: translate(-50%, -120px);
 	}
