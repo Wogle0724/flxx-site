@@ -1,6 +1,14 @@
 {
 	"songs": [
 		{
+			"name": "lovestruck!",
+			"date": "04-3-2026",
+			"appleLink": "https://music.apple.com/us/album/lovestruck-ep/1886221666",
+			"spotifyLink": "https://open.spotify.com/album/7s40EOVEHr94GaeyYZjcRB?si=df_IIUG8QgGVpN-dcGtnKg",
+			"imagePath": "images/lovestruck.JPEG",
+			"features": "RXKNephew, soultie."
+		},
+		{
 			"name": "step wit me",
 			"date": "11-5-2025",
 			"appleLink": "https://music.apple.com/us/song/step-wit-me-feat-beany-bop-no-ty/1846968168",
